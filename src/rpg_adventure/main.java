@@ -7,6 +7,7 @@ public class main {
         Scanner s = new Scanner(System.in);
         main_menu();
         int health = 10;
+        int max_health = 10;
         double money = 20.0;
         String name;
         System.out.println("Please enter your name");
@@ -26,10 +27,18 @@ public class main {
                 char letter = letter_input.next().charAt(0);
                 System.out.println(" ");
                 if (letter == 'y' || letter == 'Y') {
-                    money -= 5;
-                    health += 2;
-                    System.out.println("You now have " + money + " coins left");
-                    System.out.println("Your health is now at " + health);
+                    if((money > 5) && (health < max_health)){
+                        money -= 5;
+                        health += 2;
+                        System.out.println("You now have " + money + " coins left");
+                        System.out.println("Your health is now at " + health);
+                    }
+                    else if(money < 5){
+                        System.out.println("Sorry you do not have enough money to purchase a potion");
+                    }
+                    else{
+                        System.out.println("Sorry your health is already full");
+                    }
                 }
                 else {
                     System.out.println("You will now return to the square\n");
@@ -37,6 +46,52 @@ public class main {
             }
             else if (input == 2) {//Go to the forest
                 System.out.println("You approach the edge of the forest");
+                System.out.println("Would you like to enter? Please enter yes or no");
+                Scanner letter_input = new Scanner(System.in);
+                char letter = letter_input.next().charAt(0);
+                if(letter == 'y' || letter == 'Y'){
+                    System.out.println("You enter the woods and soon come to a crossroads. \n" +
+                            "The sign is old and weathered and is no longer readable \n" +
+                            "Do you want to \n[1] turn around \n[2] continue straight  \n[3] go left " +
+                            "\n[4] go right \n");
+                    Scanner Crossroads_input = new Scanner(System.in);
+                    int crossroads = Crossroads_input.nextInt();
+
+                    switch (crossroads){
+                        case 1:
+                            System.out.println("You turn around and head back to the town \n");
+                            break;
+                        case 2:
+                            System.out.println("You continue along the path and stumble upon a crashed carriage.\n" +
+                                    "Inside you find a a couple gold coins! \n" +
+                                    "You return to town \n");
+                            money += 2;
+                            break;
+                        case 3:
+                            System.out.println("As you travel along the road you are attacked by a wolf.\n" +
+                                    "You manage to kill the wolf but suffer a wound \n" +
+                                    "After patching your wound you had back to town \n");
+                            health--;
+                            break;
+                        case 4:
+                            System.out.println("The road starts to deteriorate and soon fades away. \n" +
+                                    "Do you want to continue into the woods? [Yes] or [No] ");
+                            char right_choice = Crossroads_input.next().charAt(0);
+                            if(right_choice == 'y' || right_choice == 'Y'){
+                                System.out.println("You continue into the roads and stumble across a bear den \n" +
+                                        "You drop your pouch of coins running away \n" +
+                                        "You are now back in town \n");
+                                money = 0;
+                            }
+                            else{
+                                System.out.println("You turn around and head back to town \n");
+                            }
+                            break;
+                    }
+                }
+                else{
+                    continue;
+                }
             }
             else if (input == 3) {//Talk to people in the square
                 System.out.println("Who would you like to talk too?");
