@@ -3,8 +3,13 @@ package rpg_adventure;
 public class Player {
     private int health = 10;
     private int max_health=10;
+    private int experience=0;
     private double money = 20;
     private String player_name;
+
+    public Player(String player_name) {
+        this.player_name = player_name;
+    }
 
     public int getHealth() {
         return health;
@@ -36,5 +41,13 @@ public class Player {
 
     public void setPlayer_name(String player_name) {
         this.player_name = player_name;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void modifyExperience(int change){
+        this.experience = experience + change;
     }
 }

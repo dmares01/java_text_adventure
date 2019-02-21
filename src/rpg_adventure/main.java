@@ -7,12 +7,11 @@ public class main {
     public static void main(String [] args){
         Scanner s = new Scanner(System.in);
         main_menu();
-        Player user = new Player();
         Store general_store = new Store();
         String name;
         System.out.println("Please enter your name");
         name = s.nextLine();
-        user.setPlayer_name(name);
+        Player user = new Player(name);
         System.out.println("\nWelcome to Defiled Dungeons " + user.getPlayer_name());
         town_square();
 
@@ -20,7 +19,7 @@ public class main {
         System.out.println(" ");
         while(input != 4) {
             if (input == 1) {//Go to the Store
-                store_menu(user);
+                general_store.menu(user);
             }
             else if (input == 2) {//Go to the forest
                 System.out.println("You approach the edge of the forest");
@@ -111,31 +110,6 @@ public class main {
             System.exit(1011011001);
         }
 
-    }
-    private static void store_menu(Player user){
-        System.out.println("Would you like to buy a health potion? One potion costs");
-        System.out.println("five coins and will restore two health. \nYou have " + user.getMoney() + " coins");
-        System.out.println("Enter yes or no");
-        Scanner letter_input = new Scanner(System.in);
-        char letter = letter_input.next().charAt(0);
-        System.out.println(" ");
-        if (letter == 'y' || letter == 'Y') {
-            if((user.getMoney() > 5) && (user.getMoney() < user.getMax_health())){
-                user.modifyMoney(-5);//decrease money by 5
-                user.modifyHealth(2);//increase health by 2
-                System.out.println("You now have " + user.getMoney() + " coins left");
-                System.out.println("Your health is now at " + user.getHealth());
-            }
-            else if(user.getMoney() < 5){
-                System.out.println("Sorry you do not have enough money to purchase a potion");
-            }
-            else{
-                System.out.println("Sorry your health is already full");
-            }
-        }
-        else {
-            System.out.println("You return to the square\n");
-        }
     }
 }
 
