@@ -13,6 +13,7 @@ public class main {
         name = s.nextLine();
         Player user = new Player(name);
         System.out.println("\nWelcome to Defiled Dungeons " + user.getPlayer_name());
+        general_store.store_list();
         town_square();
 
         int input = s.nextInt();
@@ -77,7 +78,6 @@ public class main {
             input = s.nextInt();
         }
     }
-
     private static void town_square(){
         System.out.println("Please enter the corresponding number for the option you wish to choose");
         System.out.println("[1] Go to the Store.");

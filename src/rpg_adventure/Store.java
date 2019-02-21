@@ -1,6 +1,9 @@
 package rpg_adventure;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static rpg_adventure.Item.item_print;
 
 public class Store {
     /*
@@ -10,13 +13,9 @@ public class Store {
     want to eventually move over to using item class so that hard coded numbers can be replaced
         with cost variable instead.
     */
+    Item potion = new Item("potion",2,"does nothing");
     Item health_potion = new Item("Health Potion",  3,"Heals 2 health");
-    Item large_health_potion = new Item("Large Health Potion",5, "Heals 5 health");
-    Item [] for_sale = new Item[2];
-
-    for_sale[0] = health_potion;
-    for_sale[1] = large_health_potion;
-
+    Item large_health_potion = new Item("Lg Health Potion",5, "Heals 5 health");
     //updated menu
     public static void menu_updated(Player user){
 
@@ -45,6 +44,15 @@ public class Store {
         }
         else {
             System.out.println("You return to the square\n");
+        }
+    }
+    public void store_list(){
+        ArrayList<Item> for_sale = new ArrayList<Item>();
+        for_sale.add(health_potion);
+        for_sale.add(large_health_potion);
+        for_sale.add(potion);
+        for(int i=0; i<for_sale.size(); i++){
+            item_print(for_sale.get(i));
         }
     }
 
