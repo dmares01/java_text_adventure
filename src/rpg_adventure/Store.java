@@ -13,10 +13,12 @@ public class Store {
     want to eventually move over to using item class so that hard coded numbers can be replaced
         with cost variable instead.
     */
+
+    //list of items available in every store
     Item potion = new Item("potion",2,"does nothing");
     Item health_potion = new Item("Health Potion",  3,"Heals 2 health");
     Item large_health_potion = new Item("Lg Health Potion",5, "Heals 5 health");
-    //updated menu
+
     public static void menu_updated(Player user){
 
     }
