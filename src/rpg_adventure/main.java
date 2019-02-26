@@ -13,14 +13,14 @@ public class main {
         name = s.nextLine();
         Player user = new Player(name);
         System.out.println("\nWelcome to Defiled Dungeons " + user.getPlayer_name());
-        general_store.store_list();
+        general_store.store_list(user);
         town_square();
 
         int input = s.nextInt();
         System.out.println(" ");
         while(input != 4) {
             if (input == 1) {//Go to the Store
-                general_store.menu(user);
+                general_store.store_list(user);
             }
             else if (input == 2) {//Go to the forest
                 System.out.println("You approach the edge of the forest");
