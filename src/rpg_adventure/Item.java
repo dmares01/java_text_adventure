@@ -1,7 +1,7 @@
 package rpg_adventure;
 
 public class Item{
-    private static String name;
+    private  String name;
     private int cost;
     private String effect; //keep definition short to stay on one line
 
@@ -17,7 +17,7 @@ public class Item{
         return effect;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 

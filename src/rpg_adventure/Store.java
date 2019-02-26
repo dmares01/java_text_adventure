@@ -3,7 +3,6 @@ package rpg_adventure;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static rpg_adventure.Item.getName;
 import static rpg_adventure.Item.item_print;
 
 public class Store {
@@ -25,7 +24,10 @@ public class Store {
         Scanner store_decision = new Scanner(System.in);
         int decision;
         decision = store_decision.nextInt();
-        System.out.println("You purchased a "+ items.get(decision));
+        Item x = (Item) items.get(decision);
+        user.modifyMoney(-(x.getCost()));
+        System.out.println("You purchased a "+ x.getName());
+        System.out.println("You now have " + user.getMoney()+ " coins left\n");
     }
 
     public void store_list(Player user){
