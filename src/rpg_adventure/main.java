@@ -13,7 +13,7 @@ public class main {
         name = s.nextLine();
         Player user = new Player(name);
         System.out.println("\nWelcome to Defiled Dungeons " + user.getPlayer_name());
-        general_store.store_list(user);
+        //general_store.store_list(user);
         town_square();
 
         int input = s.nextInt();
